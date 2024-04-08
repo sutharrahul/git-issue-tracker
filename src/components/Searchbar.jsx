@@ -2,14 +2,14 @@ import React from "react";
 
 function Searchbar() {
   return (
-    <div className="flex items-center w-full gap-4 px-8">
+    <div className="flex items-center w-full gap-4 px-8 py-9">
       <div className="avatar">
         <div className="w-16 rounded-full">
           <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
         </div>
       </div>
-      <div>
-        <label className="input input-bordered flex items-center gap-2">
+      <div className="mr-auto w-full">
+        <label className="input input-bordered flex items-center gap-2 ">
           <input type="text" className="grow" placeholder="Search" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
