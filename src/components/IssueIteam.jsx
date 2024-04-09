@@ -4,7 +4,7 @@ import Badge from "./Badge";
 function IssueIteam() {
   return (
     <div className="px-8">
-      <div className="flex items-center border border-slate-500 rounded-md py-3 px-4 ">
+      <div className="flex items-center border  border-[#30363d] py-3 px-4 ">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <span className="tooltipped tooltipped-e" aria-label="Open issue">
