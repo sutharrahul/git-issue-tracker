@@ -1,13 +1,13 @@
 import HomePage from "./HomePage";
 import IssueDetailPage from "./IssueDetailPage";
-import { MyEditor } from "./components/MyEditor";
+
+import RichtextEditor from "./components/RichTextEditor";
 
 function App() {
   return (
     <>
       {/* <HomePage /> */}
-      {/* <IssueDetailPage /> */}
-      <MyEditor />
+      <IssueDetailPage />
     </>
   );
 }
