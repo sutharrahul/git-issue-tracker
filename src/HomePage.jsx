@@ -1,19 +1,19 @@
 import React from "react";
 import Searchbar from "./components/Searchbar";
 import Navbar from "./components/Navbar";
-import Card from "./components/Card";
+import IssueIteam from "./components/IssueIteam";
 
 function HomePage() {
   return (
     <>
       <Searchbar />
       <Navbar />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <IssueIteam />
+      <IssueIteam />
+      <IssueIteam />
+      <IssueIteam />
+      <IssueIteam />
+      <IssueIteam />
     </>
   );
 }
