@@ -1,9 +1,13 @@
 import HomePage from "./HomePage";
+import IssueDetailPage from "./IssueDetailPage";
+import { MyEditor } from "./components/MyEditor";
 
 function App() {
   return (
     <>
-      <HomePage />
+      {/* <HomePage /> */}
+      {/* <IssueDetailPage /> */}
+      <MyEditor />
     </>
   );
 }
