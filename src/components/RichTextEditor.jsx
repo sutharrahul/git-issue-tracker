@@ -2,6 +2,7 @@ import React from "react";
 import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from "draft-js";
 import "./RichTextEditor.css";
 import "../../node_modules/draft-js/dist/Draft.css";
+import Avatar from "./Avatar";
 class RichTextEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -64,7 +65,14 @@ class RichTextEditor extends React.Component {
     }
 
     return (
-      <div className="px-12 py-3">
+      <div className="px-12 py-3 flex gap-1">
+        <Avatar />
+        <div
+          className="w-0 h-0 mt-6 mr-[-4px]
+  border-t-[5px] border-t-transparent
+  border-r-[7px] border-r-gray-200
+  border-b-[5px] border-b-transparent"
+        ></div>
         <div className="RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
