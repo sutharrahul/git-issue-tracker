@@ -11,9 +11,6 @@ function HomePage() {
       <IssueIteam />
       <IssueIteam />
       <IssueIteam />
-      <IssueIteam />
-      <IssueIteam />
-      <IssueIteam />
     </>
   );
 }
