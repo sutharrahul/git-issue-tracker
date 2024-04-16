@@ -65,37 +65,45 @@ class RichTextEditor extends React.Component {
     }
 
     return (
-      <div className="px-12 py-3 flex gap-1">
-        <Avatar />
-        <div
-          className="w-0 h-0 mt-6 mr-[-4px]
+      <div className="flex flex-col px-12">
+        <div className=" py-3 flex gap-1">
+          <Avatar />
+          <div
+            className="w-0 h-0 mt-6 mr-[-4px]
   border-t-[5px] border-t-transparent
   border-r-[7px] border-r-gray-200
   border-b-[5px] border-b-transparent"
-        ></div>
-        <div className="RichEditor-root">
-          <BlockStyleControls
-            editorState={editorState}
-            onToggle={this.toggleBlockType}
-          />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={this.toggleInlineStyle}
-          />
-          <div className={className} onClick={this.focus}>
-            <Editor
-              blockStyleFn={getBlockStyle}
-              customStyleMap={styleMap}
+          ></div>
+          <div className="RichEditor-root">
+            <BlockStyleControls
               editorState={editorState}
-              handleKeyCommand={this.handleKeyCommand}
-              keyBindingFn={this.mapKeyToEditorCommand}
-              onChange={this.onChange}
-              placeholder="Tell a story..."
-              ref="editor"
-              spellCheck={true}
+              onToggle={this.toggleBlockType}
             />
+            <InlineStyleControls
+              editorState={editorState}
+              onToggle={this.toggleInlineStyle}
+            />
+            <div className={className} onClick={this.focus}>
+              <Editor
+                blockStyleFn={getBlockStyle}
+                customStyleMap={styleMap}
+                editorState={editorState}
+                handleKeyCommand={this.handleKeyCommand}
+                keyBindingFn={this.mapKeyToEditorCommand}
+                onChange={this.onChange}
+                placeholder="Tell a story..."
+                ref="editor"
+                spellCheck={true}
+              />
+            </div>
           </div>
         </div>
+        <button
+          type="submit"
+          className="self-end px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded"
+        >
+          Comment
+        </button>
       </div>
     );
   }
