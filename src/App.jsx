@@ -4,8 +4,7 @@ import IssueDetailPage from "./IssueDetailPage";
 function App() {
   return (
     <>
-      {/* <HomePage /> */}
-
+      <HomePage />
       <IssueDetailPage />
     </>
   );
