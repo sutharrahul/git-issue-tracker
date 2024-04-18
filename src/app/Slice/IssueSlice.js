@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export const gitIssueSlice = createSlice({
-  name: gitIssue,
+  name: "gitIssue",
   initialState,
 
   reducers: {
