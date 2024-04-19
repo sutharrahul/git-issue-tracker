@@ -3,6 +3,8 @@ import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from "draft-js";
 import "./RichTextEditor.css";
 import "../../node_modules/draft-js/dist/Draft.css";
 import Avatar from "./Avatar";
+import draftToHtml from "draftjs-to-html";
+
 class RichTextEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -63,9 +65,17 @@ class RichTextEditor extends React.Component {
         className += " RichEditor-hidePlaceholder";
       }
     }
+    const getContent = () => {
+      const contentState = this.state.editorState.getCurrentContent();
+      const contentText = contentState.getPlainText(); // Get plain text
+      // const html = draftToHtml(contentState); // Convert Draft.js content to HTML
+      // console.log(html); // Log or use the HTML content as needed
+      console.log(contentText); // Log or use the content as needed
+    };
 
     return (
       <div className="flex flex-col px-12">
+        <p id="textContnt"></p>
         <div className=" py-3 flex gap-1">
           <Avatar />
           <div
@@ -83,6 +93,19 @@ class RichTextEditor extends React.Component {
               editorState={editorState}
               onToggle={this.toggleInlineStyle}
             />
+            {/* <div className={className} onClick={this.focus}>
+              <Editor
+                blockStyleFn={getBlockStyle}
+                customStyleMap={styleMap}
+                editorState={editorState}
+                handleKeyCommand={this.handleKeyCommand}
+                keyBindingFn={this.mapKeyToEditorCommand}
+                onChange={this.onChange}
+                placeholder="Tell a story..."
+                ref="editor"
+                spellCheck={true}
+              />
+            </div> */}
             <div className={className} onClick={this.focus}>
               <Editor
                 blockStyleFn={getBlockStyle}
@@ -99,11 +122,17 @@ class RichTextEditor extends React.Component {
           </div>
         </div>
         <button
+          onClick={getContent}
+          className="self-end px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded"
+        >
+          Get Content
+        </button>
+        {/* <button
           type="submit"
           className="self-end px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded"
         >
           Comment
-        </button>
+        </button> */}
       </div>
     );
   }
