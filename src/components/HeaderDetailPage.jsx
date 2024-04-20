@@ -56,7 +56,7 @@ function HeaderDetailPage() {
               <span className="text-xs text-gray-500 ml-2">today</span>
             </div>
             <Line />
-            <p className=" text-white p-3">
+            <p className=" text-white p-3" id="textContnt">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
               rerum, aut, corporis sequi explicabo aliquam obcaecati debitis
               exercitationem, voluptatem placeat repellendus perspiciatis ad
