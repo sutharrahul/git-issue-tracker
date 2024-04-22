@@ -3,6 +3,8 @@ import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from "draft-js";
 import "./RichTextEditor.css";
 import "../../node_modules/draft-js/dist/Draft.css";
 import Avatar from "./Avatar";
+import { useDispatch } from "react-redux";
+import { addGitIssue } from "../app/Slice/IssueSlice";
 import draftToHtml from "draftjs-to-html";
 
 class RichTextEditor extends React.Component {
@@ -65,11 +67,29 @@ class RichTextEditor extends React.Component {
         className += " RichEditor-hidePlaceholder";
       }
     }
+    // const dispatach = useDispatch();
+    // const YourComponent = () => {
+    //   const dispatch = useDispatch();
+    //   const editorContent = useSelector((state) => state.editor.editorContent);
+    //   const [editorState, setEditorState] = useState(editorContent);
+
+    //   const onChange = (newEditorState) => {
+    //     setEditorState(newEditorState);
+    //     dispatch(addGitIssue(editorState));
+    //   };
+    // };
     const getContent = () => {
+      // const dispatch = useDispatch();
+
       const contentState = this.state.editorState.getCurrentContent();
+
       const contentText = contentState.getPlainText(); // Get plain text
       // const html = draftToHtml(contentState); // Convert Draft.js content to HTML
       // console.log(html); // Log or use the HTML content as needed
+      // dispatach(addGitIssue(contentText));
+
+      const tts = document.getElementById("textContnt");
+      tts.innerText = contentText;
       console.log(contentText); // Log or use the content as needed
     };
 
