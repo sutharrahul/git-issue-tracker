@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  gitIssue: [],
+  editorState: EditorState.createEmpty(),
 };
 
 export const gitIssueSlice = createSlice({
@@ -9,22 +9,11 @@ export const gitIssueSlice = createSlice({
   initialState,
 
   reducers: {
-    addGitIssue: (state, action) => {
-      const gitIssue = {
-        id: nanoid(),
-        text: action.payload,
-      };
-      state.gitIssue.push(gitIssue);
-    },
-    addIssueTital: (state, action) => {
-      const issueTital = {
-        id: nanoid(),
-        text: action.payload,
-      };
-      state.gitIssue.push(issueTital);
+    addGitIssue(state, action) {
+      state.editorState = action.payload;
     },
   },
 });
 
-export const { addGitIssue, addIssueTital } = gitIssueSlice.actions;
+export const { addGitIssue } = gitIssueSlice.actions;
 export default gitIssueSlice.reducer;
