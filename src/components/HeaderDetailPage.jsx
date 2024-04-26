@@ -1,6 +1,10 @@
 import React from "react";
 import { Line, Avatar } from "./index";
+import { useSelector } from "react-redux";
+
 function HeaderDetailPage() {
+  const gitIssue = useSelector((state) => state.gitIssue);
+
   return (
     <div className="px-[2.80rem]">
       <div>
