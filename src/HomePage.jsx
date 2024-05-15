@@ -1,7 +1,5 @@
 import React from "react";
-import Searchbar from "./components/Searchbar";
-import Navbar from "./components/Navbar";
-import IssueIteam from "./components/IssueIteam";
+import { IssueIteam, Navbar, Searchbar } from "./components";
 
 function HomePage() {
   return (

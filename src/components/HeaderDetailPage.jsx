@@ -1,9 +1,5 @@
 import React from "react";
-import RichTextEditor from "./RichTextEditor";
-import Avatar from "./Avatar";
-import Line from "./Line";
-import SideInfo from "./SideInfo";
-
+import { Line, Avatar } from "./index";
 function HeaderDetailPage() {
   return (
     <div className="px-[2.80rem]">

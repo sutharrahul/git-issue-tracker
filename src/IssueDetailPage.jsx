@@ -1,7 +1,5 @@
 import React from "react";
-import RichTextEditor from "./components/RichTextEditor";
-import HeaderDetailPage from "./components/HeaderDetailPage";
-import SideInfo from "./components/SideInfo";
+import { HeaderDetailPage, RichTextEditor, SideInfo } from "./components";
 
 function IssueDetailPage() {
   return (
