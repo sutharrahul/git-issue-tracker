@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import gitIssueSlice from "./Slice/IssueSlice";
+import editorSlice from "./Slice/IssueSlice2";
 
 export const store = configureStore({
-  reducer: gitIssueSlice,
+  reducer: editorSlice,
 });

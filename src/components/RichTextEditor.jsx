@@ -1,8 +1,16 @@
 import React from "react";
-import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from "draft-js";
+import {
+  Editor,
+  EditorState,
+  RichUtils,
+  convertToRaw,
+  getDefaultKeyBinding,
+} from "draft-js";
 import "./RichTextEditor.css";
 import "../../node_modules/draft-js/dist/Draft.css";
 import Avatar from "./Avatar";
+import draftToHtml from "draftjs-to-html";
+import { useDispatch } from "react-redux";
 
 class RichTextEditor extends React.Component {
   constructor(props) {
@@ -53,6 +61,15 @@ class RichTextEditor extends React.Component {
   }
 
   render() {
+    const getContent = () => {
+      const dispatach = useDispatch();
+      const currentContent = this.state.editorState.getCurrentContent();
+      const rawContentState = convertToRaw(currentContent); // Convert Draft.js content to HTML
+      const contentText = draftToHtml(rawContentState);
+      const tts = document.getElementById("textContnt");
+      tts.innerHTML = contentText;
+      dispatach(contentText);
+    };
     const { editorState } = this.state;
 
     // If the user changes block type before entering any text, we can
