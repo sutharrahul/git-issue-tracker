@@ -7,26 +7,37 @@ import {
   getDefaultKeyBinding,
 } from "draft-js";
 import "./RichTextEditor.css";
-import "../../node_modules/draft-js/dist/Draft.css";
-import Avatar from "./Avatar";
+import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
+import { addTodo, toggleTodo } from "../app/Store";
+import Avatar from "./Avatar";
 
 class RichTextEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
+    this.state = {
+      editorState: EditorState.createEmpty(),
+    };
 
-    this.focus = () => this.refs.editor.focus();
-    this.onChange = (editorState) => this.setState({ editorState });
-
-    this.handleKeyCommand = this._handleKeyCommand.bind(this);
-    this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
-    this.toggleBlockType = this._toggleBlockType.bind(this);
-    this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
+    this.focus = this.focus.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.handleKeyCommand = this.handleKeyCommand.bind(this);
+    this.mapKeyToEditorCommand = this.mapKeyToEditorCommand.bind(this);
+    this.toggleBlockType = this.toggleBlockType.bind(this);
+    this.toggleInlineStyle = this.toggleInlineStyle.bind(this);
+    this.getContent = this.getContent.bind(this);
   }
 
-  _handleKeyCommand(command, editorState) {
+  focus() {
+    this.refs.editor.focus();
+  }
+
+  onChange(editorState) {
+    this.setState({ editorState });
+  }
+
+  handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       this.onChange(newState);
@@ -35,7 +46,7 @@ class RichTextEditor extends React.Component {
     return false;
   }
 
-  _mapKeyToEditorCommand(e) {
+  mapKeyToEditorCommand(e) {
     if (e.keyCode === 9 /* TAB */) {
       const newEditorState = RichUtils.onTab(
         e,
@@ -50,30 +61,30 @@ class RichTextEditor extends React.Component {
     return getDefaultKeyBinding(e);
   }
 
-  _toggleBlockType(blockType) {
+  toggleBlockType(blockType) {
     this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
   }
 
-  _toggleInlineStyle(inlineStyle) {
+  toggleInlineStyle(inlineStyle) {
     this.onChange(
       RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
     );
   }
 
-  render() {
-    const getContent = () => {
-      const dispatach = useDispatch();
-      const currentContent = this.state.editorState.getCurrentContent();
-      const rawContentState = convertToRaw(currentContent); // Convert Draft.js content to HTML
-      const contentText = draftToHtml(rawContentState);
-      const tts = document.getElementById("textContnt");
-      tts.innerHTML = contentText;
-      dispatach(contentText);
-    };
+  getContent() {
     const { editorState } = this.state;
+    const currentContent = editorState.getCurrentContent();
+    const rawContentState = convertToRaw(currentContent);
+    const contentText = draftToHtml(rawContentState);
+    const tts = document.getElementById("textContnt");
+    // tts.innerHTML = contentText;
+    this.props.addTodo(contentText); // Dispatch action to add the new todo item
+  }
 
-    // If the user changes block type before entering any text, we can
-    // either style the placeholder or hide it. Let's just hide it now.
+  render() {
+    const { editorState } = this.state;
+    // const { todos, toggleTodo } = this.props;
+
     let className = "RichEditor-editor";
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
@@ -85,13 +96,13 @@ class RichTextEditor extends React.Component {
     return (
       <div className="flex flex-col px-12">
         <p id="textContnt"></p>
-        <div className=" py-3 flex gap-1">
+        <div className="py-3 flex gap-1">
           <Avatar />
           <div
             className="w-0 h-0 mt-6 mr-[-4px]
-  border-t-[5px] border-t-transparent
-  border-r-[7px] border-r-gray-200
-  border-b-[5px] border-b-transparent"
+            border-t-[5px] border-t-transparent
+            border-r-[7px] border-r-gray-200
+            border-b-[5px] border-b-transparent"
           ></div>
           <div className="RichEditor-root">
             <BlockStyleControls
@@ -118,7 +129,7 @@ class RichTextEditor extends React.Component {
           </div>
         </div>
         <button
-          onClick={getContent}
+          onClick={this.getContent}
           className="self-end px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded"
         >
           Get Content
@@ -150,10 +161,12 @@ function getBlockStyle(block) {
 class StyleButton extends React.Component {
   constructor() {
     super();
-    this.onToggle = (e) => {
-      e.preventDefault();
-      this.props.onToggle(this.props.style);
-    };
+    this.onToggle = this.onToggle.bind(this);
+  }
+
+  onToggle(e) {
+    e.preventDefault();
+    this.props.onToggle(this.props.style);
   }
 
   render() {
@@ -230,4 +243,14 @@ const InlineStyleControls = (props) => {
     </div>
   );
 };
-export default RichTextEditor;
+
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
+
+const mapDispatchToProps = {
+  addTodo,
+  toggleTodo,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RichTextEditor);

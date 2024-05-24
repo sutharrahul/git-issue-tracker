@@ -1,7 +1,15 @@
 import React from "react";
 import { Line, Avatar } from "./index";
+import { connect } from "react-redux";
+import { toggleTodo } from "../app/Store";
 
-function HeaderDetailPage() {
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
+const mapDispatchToProps = {
+  toggleTodo,
+};
+function HeaderDetailPage({ todos, toggleTodo }) {
   return (
     <div className="px-[2.80rem]">
       <div>
@@ -58,10 +66,11 @@ function HeaderDetailPage() {
             </div>
             <Line />
             <p className=" text-white p-3" id="textContnt">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              rerum, aut, corporis sequi explicabo aliquam obcaecati debitis
-              exercitationem, voluptatem placeat repellendus perspiciatis ad
-              nobis qui alias velit dolores unde maiores!
+              {todos.map((todo) => (
+                <li key={todo.id} onClick={() => toggleTodo(todo.id)}>
+                  {todo.text}
+                </li>
+              ))}
             </p>
           </div>
         </div>
@@ -69,5 +78,4 @@ function HeaderDetailPage() {
     </div>
   );
 }
-
-export default HeaderDetailPage;
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderDetailPage);
