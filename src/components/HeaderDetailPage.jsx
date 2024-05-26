@@ -10,6 +10,7 @@ const mapDispatchToProps = {
   toggleTodo,
 };
 function HeaderDetailPage({ todos, toggleTodo }) {
+  const Name = prompt("Enter User Name");
   return (
     <div className="px-[2.80rem]">
       <div>
@@ -48,33 +49,31 @@ function HeaderDetailPage({ todos, toggleTodo }) {
       <div className="py-7">
         <Line />
       </div>
-      <div className="flex gap-1">
-        <Avatar />
-        <div className="flex items-start">
-          <div
-            className="w-0 h-0 mt-4 
+      {todos.map((todo) => (
+        <div className="flex gap-1 pt-3">
+          <Avatar />
+          <div className="flex items-start w-full">
+            <div
+              className="w-0 h-0 mt-4 
              border-t-[5px] border-t-transparent
              border-r-[7px] border-r-gray-200
              border-b-[5px] border-b-transparent"
-          ></div>
-          <div className="border border-gray-200 rounded-md ">
-            <div className="flex items-center px-5 py-3 bg-slate-800 rounded-lg over">
-              <h4 className="text-base text-white font-semibold">
-                sutharrahul
-              </h4>
-              <span className="text-xs text-gray-500 ml-2">today</span>
-            </div>
-            <Line />
-            <p className=" text-white p-3" id="textContnt">
-              {todos.map((todo) => (
+            ></div>
+            <div className="border border-gray-200 rounded-md w-full ">
+              <div className="flex items-center px-5 py-3 bg-slate-800 rounded-lg over">
+                <h4 className="text-base text-white font-semibold">{Name}</h4>
+                <span className="text-xs text-gray-500 ml-2">today</span>
+              </div>
+              <Line />
+              <p className=" text-white p-3" id="textContnt">
                 <li key={todo.id} onClick={() => toggleTodo(todo.id)}>
                   {todo.text}
                 </li>
-              ))}
-            </p>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }
