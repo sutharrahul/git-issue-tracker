@@ -10,7 +10,7 @@ import "./RichTextEditor.css";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
 import { connect } from "react-redux";
-import { addTodo, toggleTodo } from "../app/Store";
+import { addGitIssue } from "../app/Slice/IssueSlice";
 import Avatar from "./Avatar";
 
 class RichTextEditor extends React.Component {
@@ -77,13 +77,11 @@ class RichTextEditor extends React.Component {
     const rawContentState = convertToRaw(currentContent);
     const contentText = draftToHtml(rawContentState);
     const tts = document.getElementById("textContnt");
-    // tts.innerHTML = contentText;
-    this.props.addTodo(contentText); // Dispatch action to add the new todo item
+    this.props.addGitIssue(contentText); // Dispatch action to add the new todo item
   }
 
   render() {
     const { editorState } = this.state;
-    // const { todos, toggleTodo } = this.props;
 
     let className = "RichEditor-editor";
     var contentState = editorState.getCurrentContent();
@@ -245,12 +243,11 @@ const InlineStyleControls = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  todos: state.todos,
+  gitIssues: state.gitIssues,
 });
 
 const mapDispatchToProps = {
-  addTodo,
-  toggleTodo,
+  addGitIssue,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RichTextEditor);

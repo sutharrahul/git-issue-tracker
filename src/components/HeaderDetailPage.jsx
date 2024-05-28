@@ -1,16 +1,12 @@
 import React from "react";
 import { Line, Avatar } from "./index";
 import { connect } from "react-redux";
-import { toggleTodo } from "../app/Store";
 
 const mapStateToProps = (state) => ({
-  todos: state.todos,
+  gitIssues: state.gitIssues,
 });
-const mapDispatchToProps = {
-  toggleTodo,
-};
-function HeaderDetailPage({ todos, toggleTodo }) {
-  const Name = prompt("Enter User Name");
+
+function HeaderDetailPage({ gitIssues }) {
   return (
     <div className="px-[2.80rem]">
       <div>
@@ -49,7 +45,7 @@ function HeaderDetailPage({ todos, toggleTodo }) {
       <div className="py-7">
         <Line />
       </div>
-      {todos.map((todo) => (
+      {gitIssues.map((gitIssue) => (
         <div className="flex gap-1 pt-3">
           <Avatar />
           <div className="flex items-start w-full">
@@ -61,14 +57,14 @@ function HeaderDetailPage({ todos, toggleTodo }) {
             ></div>
             <div className="border border-gray-200 rounded-md w-full ">
               <div className="flex items-center px-5 py-3 bg-slate-800 rounded-lg over">
-                <h4 className="text-base text-white font-semibold">{Name}</h4>
+                <h4 className="text-base text-white font-semibold">
+                  {gitIssue.userName}
+                </h4>
                 <span className="text-xs text-gray-500 ml-2">today</span>
               </div>
               <Line />
-              <p className=" text-white p-3" id="textContnt">
-                <li key={todo.id} onClick={() => toggleTodo(todo.id)}>
-                  {todo.text}
-                </li>
+              <p className=" text-white p-3" key={gitIssue.id}>
+                {gitIssue.text}
               </p>
             </div>
           </div>
@@ -77,4 +73,4 @@ function HeaderDetailPage({ todos, toggleTodo }) {
     </div>
   );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderDetailPage);
+export default connect(mapStateToProps)(HeaderDetailPage);
