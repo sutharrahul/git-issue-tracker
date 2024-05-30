@@ -1,5 +1,6 @@
 import React from "react";
 import Badge from "./Badge";
+import { Link } from "react-router-dom";
 
 function IssueIteam() {
   return (
@@ -20,9 +21,13 @@ function IssueIteam() {
                 <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
               </svg>
             </span>
-            <h1 className="gap-4 text-white font-semibold">
+
+            <Link
+              to="/issue"
+              className="gap-4 text-white font-semibold hover:text-blue-500 hover:underline cursor-pointer"
+            >
               Context update should account for deleted files
-            </h1>
+            </Link>
             <Badge />
           </div>
           <div>

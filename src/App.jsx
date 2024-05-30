@@ -1,12 +1,13 @@
+import { Outlet } from "react-router-dom";
 import HomePage from "./HomePage";
 import IssueDetailPage from "./IssueDetailPage";
-import { RichTextEditor } from "./components";
 
 function App() {
   return (
     <>
-      <HomePage />
-      <IssueDetailPage />
+      {/* <HomePage />
+      <IssueDetailPage /> */}
+      <Outlet />
     </>
   );
 }
