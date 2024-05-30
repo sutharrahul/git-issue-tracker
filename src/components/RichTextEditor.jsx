@@ -26,7 +26,7 @@ class RichTextEditor extends React.Component {
     this.mapKeyToEditorCommand = this.mapKeyToEditorCommand.bind(this);
     this.toggleBlockType = this.toggleBlockType.bind(this);
     this.toggleInlineStyle = this.toggleInlineStyle.bind(this);
-    this.getContent = this.getContent.bind(this);
+    this.getComment = this.getComment.bind(this);
   }
 
   focus() {
@@ -71,7 +71,7 @@ class RichTextEditor extends React.Component {
     );
   }
 
-  getContent() {
+  getComment() {
     const { editorState } = this.state;
     const currentContent = editorState.getCurrentContent();
     const rawContentState = convertToRaw(currentContent);
@@ -127,10 +127,10 @@ class RichTextEditor extends React.Component {
           </div>
         </div>
         <button
-          onClick={this.getContent}
+          onClick={this.getComment}
           className="self-end px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded"
         >
-          Get Content
+          Comment
         </button>
       </div>
     );
