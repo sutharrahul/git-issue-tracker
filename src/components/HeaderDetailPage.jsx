@@ -46,7 +46,7 @@ function HeaderDetailPage({ gitIssues }) {
         <Line />
       </div>
       {gitIssues.map((gitIssue) => (
-        <div className="flex gap-1 pt-3">
+        <div className="flex gap-1 pt-3" key={gitIssue.id}>
           <Avatar />
           <div className="flex items-start w-full">
             <div
@@ -63,9 +63,7 @@ function HeaderDetailPage({ gitIssues }) {
                 <span className="text-xs text-gray-500 ml-2">today</span>
               </div>
               <Line />
-              <p className=" text-white p-3" key={gitIssue.id}>
-                {gitIssue.text}
-              </p>
+              <p className=" text-white p-3">{gitIssue.text}</p>
             </div>
           </div>
         </div>
