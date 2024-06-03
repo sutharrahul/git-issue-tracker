@@ -28,7 +28,7 @@
 // export { addTodo, toggleTodo, store };
 
 import { configureStore } from "@reduxjs/toolkit";
-import gitIssueReducer from "./Slice/IssueSlice";
+import gitIssueReducer from "./Slice/commentIssueSlice";
 
 export const store = configureStore({
   reducer: gitIssueReducer,

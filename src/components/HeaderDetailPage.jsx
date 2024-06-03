@@ -3,10 +3,10 @@ import { Line, Avatar } from "./index";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-  gitIssues: state.gitIssues,
+  commentGitIssues: state.commentGitIssues,
 });
 
-function HeaderDetailPage({ gitIssues }) {
+function HeaderDetailPage({ commentGitIssues }) {
   return (
     <div className="px-[2.80rem]">
       <div>
@@ -45,7 +45,7 @@ function HeaderDetailPage({ gitIssues }) {
       <div className="py-7">
         <Line />
       </div>
-      {gitIssues.map((gitIssue) => (
+      {commentGitIssues.map((gitIssue) => (
         <div className="flex gap-1 pt-3" key={gitIssue.id}>
           <Avatar />
           <div className="flex items-start w-full">
