@@ -31,5 +31,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import gitIssueReducer from "./Slice/commentIssueSlice";
 
 export const store = configureStore({
-  reducer: gitIssueReducer,
+  reducer: {
+    gitIssueComment: gitIssueReducer,
+  },
 });

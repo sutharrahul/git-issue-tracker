@@ -3,16 +3,16 @@ import { Line, Avatar } from "./index";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-  commentGitIssues: state.commentGitIssues,
+  commentGitIssues: state.gitIssueComment.commentGitIssues, // Update this line
 });
 
 function HeaderDetailPage({ commentGitIssues }) {
   return (
     <div className="px-[2.80rem]">
       <div>
-        <div className="flex flex-col flex-wrap justify-end items-start sm:flex-row  sm:items-center py-5 sm:justify-between ">
+        <div className="flex flex-col flex-wrap justify-end items-start sm:flex-row sm:items-center py-5 sm:justify-between">
           <h1 className="text-white md:text-3xl font-semibold">
-            Issue Title ( Quando ambulabat agendis admonere )
+            Issue Title (Quando ambulabat agendis admonere)
           </h1>
           <button className="px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded">
             New issue
@@ -21,7 +21,7 @@ function HeaderDetailPage({ commentGitIssues }) {
         <div className="flex items-center gap-3">
           <span className="">
             <span
-              className="tooltipped tooltipped-e flex items-center text-white gap-1 px-3 py-1 rounded-full bg-[#238636] "
+              className="tooltipped tooltipped-e flex items-center text-white gap-1 px-3 py-1 rounded-full bg-[#238636]"
               aria-label="Open issue"
             >
               <svg
@@ -39,7 +39,7 @@ function HeaderDetailPage({ commentGitIssues }) {
             </span>
           </span>
           <span>sutharrahul</span>
-          <span>5 hout ago</span>
+          <span>5 hours ago</span>
         </div>
       </div>
       <div className="py-7">
@@ -51,19 +51,19 @@ function HeaderDetailPage({ commentGitIssues }) {
           <div className="flex items-start w-full">
             <div
               className="w-0 h-0 mt-4 
-             border-t-[5px] border-t-transparent
-             border-r-[7px] border-r-gray-200
-             border-b-[5px] border-b-transparent"
+              border-t-[5px] border-t-transparent
+              border-r-[7px] border-r-gray-200
+              border-b-[5px] border-b-transparent"
             ></div>
-            <div className="border border-gray-200 rounded-md w-full ">
-              <div className="flex items-center px-5 py-3 bg-slate-800 rounded-lg over">
+            <div className="border border-gray-200 rounded-md w-full">
+              <div className="flex items-center px-5 py-3 bg-slate-800 rounded-lg">
                 <h4 className="text-base text-white font-semibold">
                   {commentGitIssue.userName}
                 </h4>
                 <span className="text-xs text-gray-500 ml-2">today</span>
               </div>
               <Line />
-              <p className=" text-white p-3">{commentGitIssue.text}</p>
+              <p className="text-white p-3">{commentGitIssue.text}</p>
             </div>
           </div>
         </div>
@@ -71,4 +71,5 @@ function HeaderDetailPage({ commentGitIssues }) {
     </div>
   );
 }
+
 export default connect(mapStateToProps)(HeaderDetailPage);
