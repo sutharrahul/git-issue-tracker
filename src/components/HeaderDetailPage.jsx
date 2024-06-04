@@ -45,8 +45,8 @@ function HeaderDetailPage({ commentGitIssues }) {
       <div className="py-7">
         <Line />
       </div>
-      {commentGitIssues.map((gitIssue) => (
-        <div className="flex gap-1 pt-3" key={gitIssue.id}>
+      {commentGitIssues.map((commentGitIssue) => (
+        <div className="flex gap-1 pt-3" key={commentGitIssue.id}>
           <Avatar />
           <div className="flex items-start w-full">
             <div
@@ -58,12 +58,12 @@ function HeaderDetailPage({ commentGitIssues }) {
             <div className="border border-gray-200 rounded-md w-full ">
               <div className="flex items-center px-5 py-3 bg-slate-800 rounded-lg over">
                 <h4 className="text-base text-white font-semibold">
-                  {gitIssue.userName}
+                  {commentGitIssue.userName}
                 </h4>
                 <span className="text-xs text-gray-500 ml-2">today</span>
               </div>
               <Line />
-              <p className=" text-white p-3">{gitIssue.text}</p>
+              <p className=" text-white p-3">{commentGitIssue.text}</p>
             </div>
           </div>
         </div>
