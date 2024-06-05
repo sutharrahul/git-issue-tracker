@@ -14,9 +14,6 @@ function HeaderDetailPage({ commentGitIssues }) {
           <h1 className="text-white md:text-3xl font-semibold">
             Issue Title (Quando ambulabat agendis admonere)
           </h1>
-          <button className="px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded">
-            New issue
-          </button>
         </div>
         <div className="flex items-center gap-3">
           <span className="">
