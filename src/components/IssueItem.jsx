@@ -8,6 +8,9 @@ function timeAgo(date) {
   const now = new Date();
   const secondsPast = (now.getTime() - date.getTime()) / 1000;
 
+  if (isNaN(secondsPast)) {
+    return "1 month ago";
+  }
   if (secondsPast < 60) {
     return `${Math.floor(secondsPast)} seconds ago`;
   }
@@ -62,9 +65,8 @@ function IssueItem() {
             </div>
             <div>
               <p className="text-sm pt-2">
-                #01 Status (Open/Close) Time (
-                {timeAgo(new Date(gitIssue.createdAt))}) by UserName (
-                {gitIssue.userName})
+                #01 Status (Open) Time ({timeAgo(new Date(gitIssue.createdAt))})
+                by UserName ({gitIssue.userName})
               </p>
             </div>
           </div>
