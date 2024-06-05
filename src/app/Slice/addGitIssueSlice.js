@@ -14,6 +14,7 @@ export const gitIssueSlice = createSlice({
         id: nanoid(),
         text: action.payload,
         userName: prompt("Enter User Name"),
+        createdAt: new Date().toISOString(),
       };
       state.addGitIssues.push(gitIssue);
     },

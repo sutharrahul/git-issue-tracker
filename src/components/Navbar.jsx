@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const gitIssues = useSelector((state) => state.gitIssue.addGitIssues);
+  const issueCount = gitIssues.length;
+  console.log(issueCount);
+
   return (
     <div className="px-8">
       <div className="navbar bg-[#161b22] border border-[#30363d] rounded-t-md">
@@ -19,7 +24,9 @@ function Navbar() {
           </svg>
           <div className="flex items-center gap-3">
             <div>
-              <h2 className="text-white text-lg font-semibold">13 Issue</h2>
+              <h2 className="text-white text-lg font-semibold">
+                {issueCount} Issues
+              </h2>
             </div>
             <div className="flex items-center gap-1">
               <svg
