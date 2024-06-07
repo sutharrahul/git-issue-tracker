@@ -1,33 +1,9 @@
+// issueItem.jsx
 import React from "react";
 import Badge from "./Badge";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-// timeAgo function
-function timeAgo(date) {
-  const now = new Date();
-  const secondsPast = (now.getTime() - date.getTime()) / 1000;
-
-  if (isNaN(secondsPast)) {
-    return "1 month ago";
-  }
-  if (secondsPast < 60) {
-    return `${Math.floor(secondsPast)} seconds ago`;
-  }
-  if (secondsPast < 3600) {
-    return `${Math.floor(secondsPast / 60)} minutes ago`;
-  }
-  if (secondsPast < 86400) {
-    return `${Math.floor(secondsPast / 3600)} hours ago`;
-  }
-  if (secondsPast < 2592000) {
-    return `${Math.floor(secondsPast / 86400)} days ago`;
-  }
-  if (secondsPast < 31536000) {
-    return `${Math.floor(secondsPast / 2592000)} months ago`;
-  }
-  return `${Math.floor(secondsPast / 31536000)} years ago`;
-}
+import { timeAgo } from "./timeAgo"; // Adjust the import path as needed
 
 function IssueItem() {
   const gitIssues = useSelector((state) => state.gitIssue.addGitIssues);
@@ -56,7 +32,7 @@ function IssueItem() {
               </span>
 
               <Link
-                to="/issue"
+                to={`/issue/${gitIssue.id}`}
                 className="gap-4 text-white font-semibold hover:text-blue-500 hover:underline cursor-pointer"
               >
                 {gitIssue.text}

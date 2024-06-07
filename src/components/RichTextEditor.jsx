@@ -75,8 +75,8 @@ class RichTextEditor extends React.Component {
     const { editorState } = this.state;
     const currentContent = editorState.getCurrentContent();
     const rawContentState = convertToRaw(currentContent);
-    const contentText = draftToHtml(rawContentState);
-    this.props.addGitIssueComment(contentText); // Dispatch action to add the new todo item
+    const contentHtml = draftToHtml(rawContentState);
+    this.props.addGitIssueComment(contentHtml); // Dispatch action to add the new comment
   }
 
   render() {
@@ -190,7 +190,7 @@ const BLOCK_TYPES = [
   { label: "Blockquote", style: "blockquote" },
   { label: "UL", style: "unordered-list-item" },
   { label: "OL", style: "ordered-list-item" },
-  { label: "Code Block", style: "code-block" },
+  // { label: "Code Block", style: "code-block" },
 ];
 
 const BlockStyleControls = (props) => {

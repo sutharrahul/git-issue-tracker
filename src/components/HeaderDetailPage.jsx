@@ -1,18 +1,24 @@
 import React from "react";
 import { Line, Avatar } from "./index";
 import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
+import { timeAgo } from "./timeAgo";
 
 const mapStateToProps = (state) => ({
-  commentGitIssues: state.gitIssueComment.commentGitIssues, // Update this line
+  commentGitIssues: state.gitIssueComment.commentGitIssues,
+  addGitIssues: state.gitIssue.addGitIssues, // Add this line
 });
 
-function HeaderDetailPage({ commentGitIssues }) {
+function HeaderDetailPage({ commentGitIssues, addGitIssues }) {
+  const { issueId } = useParams();
+  const issue = addGitIssues.find((issue) => issue.id == issueId);
+
   return (
     <div className="px-[2.80rem]">
       <div>
         <div className="flex flex-col flex-wrap justify-end items-start sm:flex-row sm:items-center py-5 sm:justify-between">
           <h1 className="text-white md:text-3xl font-semibold">
-            Issue Title (Quando ambulabat agendis admonere)
+            {issue ? issue.text : "Issue Title"}
           </h1>
         </div>
         <div className="flex items-center gap-3">
@@ -35,8 +41,8 @@ function HeaderDetailPage({ commentGitIssues }) {
               {"Open"}
             </span>
           </span>
-          <span>sutharrahul</span>
-          <span>5 hours ago</span>
+          <span>{issue?.userName}</span>
+          <span>{timeAgo(new Date(issue?.createdAt))}</span>
         </div>
       </div>
       <div className="py-7">
@@ -57,10 +63,15 @@ function HeaderDetailPage({ commentGitIssues }) {
                 <h4 className="text-base text-white font-semibold">
                   {commentGitIssue.userName}
                 </h4>
-                <span className="text-xs text-gray-500 ml-2">today</span>
+                <span className="text-xs text-gray-500 ml-2">
+                  {timeAgo(new Date(commentGitIssue.createdAt))}
+                </span>
               </div>
               <Line />
-              <p className="text-white p-3">{commentGitIssue.text}</p>
+              <div
+                className="text-white p-3"
+                dangerouslySetInnerHTML={{ __html: commentGitIssue.text }}
+              />
             </div>
           </div>
         </div>
