@@ -5,31 +5,31 @@ const initialState = {
     {
       id: nanoid(),
       text: "Fix bug in user authentication",
-      userName: "User1",
+      userName: "john",
       createdAt: "1 month ago",
     },
     {
       id: nanoid(),
       text: "Add new feature to dashboard",
-      userName: "user2",
+      userName: "devid",
       createdAt: "1 month ago",
     },
     {
       id: nanoid(),
       text: "Improve performance of API",
-      userName: "User3",
+      userName: "smith",
       createdAt: "1 month ago",
     },
     {
       id: nanoid(),
       text: "Refactor codebase for better readability",
-      userName: "User4",
+      userName: "buttler",
       createdAt: "1 month ago",
     },
     {
       id: nanoid(),
       text: "Update dependencies to latest versions",
-      userName: "User5",
+      userName: "jimmy",
       createdAt: "1 month ago",
     },
   ],
@@ -46,6 +46,7 @@ export const gitIssueSlice = createSlice({
         text: action.payload,
         userName: prompt("Enter User Name"),
         createdAt: new Date().toISOString(),
+        isNew: true,
       };
       state.addGitIssues.push(gitIssue);
     },

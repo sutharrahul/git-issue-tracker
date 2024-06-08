@@ -3,14 +3,14 @@ import React from "react";
 import Badge from "./Badge";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { timeAgo } from "./timeAgo"; // Adjust the import path as needed
+import { timeAgo } from "./timeAgo";
 
 function IssueItem() {
   const gitIssues = useSelector((state) => state.gitIssue.addGitIssues);
 
   return (
     <div className="px-8">
-      {gitIssues.map((gitIssue) => (
+      {gitIssues.map((gitIssue, index) => (
         <div
           key={gitIssue.id}
           className="flex items-center border border-[#30363d] py-3 px-4"
@@ -37,12 +37,17 @@ function IssueItem() {
               >
                 {gitIssue.text}
               </Link>
-              <Badge />
+              {gitIssue.isNew && <Badge />}
             </div>
             <div>
-              <p className="text-sm pt-2">
-                #01 Status (Open) Time ({timeAgo(new Date(gitIssue.createdAt))})
-                by UserName ({gitIssue.userName})
+              <p className="text-sm pt-2 ">
+                <span className="font-semibold text-blue-400">
+                  {" "}
+                  #{index + 1}{" "}
+                </span>
+                by
+                <span className=" text-blue-400"> @{gitIssue.userName}</span>
+                <span> {timeAgo(new Date(gitIssue.createdAt))}</span>
               </p>
             </div>
           </div>
