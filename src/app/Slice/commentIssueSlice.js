@@ -3,7 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const initialState = {
   commentGitIssues: [],
 };
-
+//{issueId, comment}
 export const commentGitIssueSlice = createSlice({
   name: "commentGitIssues",
   initialState,
@@ -12,7 +12,8 @@ export const commentGitIssueSlice = createSlice({
     addGitIssueComment: (state, action) => {
       const gitIssue = {
         id: nanoid(),
-        text: action.payload,
+        issueId: action.payload.issueId,
+        text: action.payload.comment,
         userName: prompt("Enter User Name"),
         createdAt: new Date().toISOString(),
       };

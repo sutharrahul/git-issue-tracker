@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="footer items-center p-4 bg-neutral text-neutral-content">
+    <footer className="footer items-center mt-2 p-5 bg-neutral text-neutral-content sticky bottom-0 z-50">
       <aside className="items-center grid-flow-col">
         <p>Created by &nbsp;</p>
         <a className="link link-warning" href="https://github.com/sutharrahul">

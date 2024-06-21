@@ -7,11 +7,6 @@ function SideInfo() {
     <div className=" pr-10 py-20">
       <aside>
         <div className="flex flex-col p-4">
-          <h4>Assignees</h4>
-          <span className="text-white font-semibold">sutharrahul</span>
-        </div>
-        <Line />
-        <div className="flex flex-col p-4">
           <span>Lable</span>
           <label htmlFor="_">
             <Badge />

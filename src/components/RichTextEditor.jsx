@@ -26,7 +26,7 @@ class RichTextEditor extends React.Component {
     this.mapKeyToEditorCommand = this.mapKeyToEditorCommand.bind(this);
     this.toggleBlockType = this.toggleBlockType.bind(this);
     this.toggleInlineStyle = this.toggleInlineStyle.bind(this);
-    this.getComment = this.getComment.bind(this);
+    this.putComment = this.putComment.bind(this);
   }
 
   focus() {
@@ -71,12 +71,15 @@ class RichTextEditor extends React.Component {
     );
   }
 
-  getComment() {
+  putComment() {
     const { editorState } = this.state;
     const currentContent = editorState.getCurrentContent();
     const rawContentState = convertToRaw(currentContent);
     const contentHtml = draftToHtml(rawContentState);
-    this.props.addGitIssueComment(contentHtml); // Dispatch action to add the new comment
+    this.props.addGitIssueComment({
+      issueId: this.props.issueId,
+      comment: contentHtml,
+    });
   }
 
   render() {
@@ -126,7 +129,7 @@ class RichTextEditor extends React.Component {
           </div>
         </div>
         <button
-          onClick={this.getComment}
+          onClick={this.putComment}
           className="self-end px-3 py-1 mt-5 sm:mt-0 bg-green-700 text-white rounded"
         >
           Comment
