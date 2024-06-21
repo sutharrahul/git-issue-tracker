@@ -2,14 +2,14 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="footer items-center mt-2 p-5 bg-neutral text-neutral-content sticky bottom-0 z-50">
+    <footer className="footer mt-2 p-5 bg-neutral text-neutral-content z-50 flex flex-col md:flex-row justify-between md:justify-center items-center fixed bottom-0 w-full">
       <aside className="items-center grid-flow-col">
         <p>Created by &nbsp;</p>
         <a className="link link-warning" href="https://github.com/sutharrahul">
           @RahulSuthar
         </a>
       </aside>
-      <nav className="grid-flow-col gap-5 md:place-self-center md:justify-self-center">
+      <nav className="grid-flow-col gap-5">
         <a
           href="https://github.com/sutharrahul"
           className="text-gray-400 transition-colors duration-200 hover:text-gray-800 "
