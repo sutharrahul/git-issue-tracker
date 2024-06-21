@@ -1,13 +1,19 @@
 import React from "react";
 import Avatar from "./Avatar";
 
-function Searchbar() {
+function Searchbar({ searchQuery, onSearchChange }) {
   return (
     <div className="flex items-center w-full gap-4 px-8 py-9">
       <Avatar />
       <div className="mr-auto w-full">
         <label className="input input-bordered flex items-center gap-2 ">
-          <input type="text" className="grow" placeholder="Search" />
+          <input
+            type="text"
+            className="grow"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"

@@ -5,8 +5,6 @@ import AddGitIssue from "./components/AddGitIssue";
 function HomePage() {
   return (
     <>
-      <Searchbar />
-      <Navbar />
       <IssueItem />
       <AddGitIssue />
     </>
