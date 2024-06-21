@@ -6,7 +6,7 @@ function IssueDetailPage() {
   const { issueId } = useParams();
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between pb-[80px]">
       <div className="w-[70%] sm:w-[100%]">
         <HeaderDetailPage />
         <RichTextEditor issueId={issueId} />

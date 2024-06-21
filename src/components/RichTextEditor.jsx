@@ -80,6 +80,7 @@ class RichTextEditor extends React.Component {
       issueId: this.props.issueId,
       comment: contentHtml,
     });
+    this.setState({ editorState: EditorState.createEmpty() });
   }
 
   render() {
