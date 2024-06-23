@@ -3,7 +3,7 @@ import Avatar from "./Avatar";
 
 function Searchbar({ searchQuery, onSearchChange }) {
   return (
-    <div className="flex items-center w-full gap-4 px-8 py-8 sticky top-0 bg-[#1D232A]">
+    <div className="flex items-center w-full gap-4 px-8 py-8 sticky top-0 bg-[#1D232A]/10 backdrop-blur-lg">
       <Avatar />
       <div className="mr-auto w-full">
         <label className="input input-bordered flex items-center gap-2 ">

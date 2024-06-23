@@ -12,7 +12,7 @@ function AddGitIssue() {
     setInput("");
   };
   return (
-    <form onSubmit={addTodoHandler} className=" py-10 px-8">
+    <form onSubmit={addTodoHandler} className=" pt-5 pb-28 px-8">
       <textarea
         type="text"
         className="textarea textarea-bordered w-full"
