@@ -4,7 +4,7 @@ Welcome to the Git Issue Tracker project! This is a front-end application built 
 
 ## Landing page
 
-![landing-page](./src/assets/LandingPage.JPG)
+![landing-page](./src/assets/LandingPage.jpg)
 
 ## Features
 
