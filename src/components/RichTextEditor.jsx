@@ -95,7 +95,7 @@ class RichTextEditor extends React.Component {
     }
 
     return (
-      <div className="flex flex-col px-12">
+      <div className="flex flex-col px-1 sm:px-12">
         <p id="textContnt"></p>
         <div className="py-3 flex gap-1">
           <Avatar />

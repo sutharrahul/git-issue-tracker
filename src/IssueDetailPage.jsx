@@ -7,7 +7,7 @@ function IssueDetailPage() {
 
   return (
     <div className="flex justify-between pb-[80px]">
-      <div className="w-[70%] sm:w-[100%]">
+      <div className="w-full sm:w-[70%] ">
         <HeaderDetailPage />
         <RichTextEditor issueId={issueId} />
       </div>
