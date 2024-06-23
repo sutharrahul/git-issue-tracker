@@ -10,13 +10,14 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import HomePage from "./HomePage.jsx";
+
 import IssueDetailPage from "./IssueDetailPage.jsx";
+import LandingPage from "./LandingPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="" element={<HomePage />} />
+      <Route path="" element={<LandingPage />} />
       <Route path="issue/:issueId" element={<IssueDetailPage />} />
     </Route>
   )

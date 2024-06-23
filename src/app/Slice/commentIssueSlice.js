@@ -3,7 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const initialState = {
   commentGitIssues: [],
 };
-//{issueId, comment}
+
 export const commentGitIssueSlice = createSlice({
   name: "commentGitIssues",
   initialState,

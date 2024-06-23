@@ -45,7 +45,7 @@ npm run build
 - Creating an Issue
 - Navigate to the Issue List page.
 - Click on the "Add Issue" button.
-- Fill the issue details in prompt and submit.
+- Fill the user name in prompt and submit.
 - Commenting on an Issue
 - Click on an issue from the Issue List page.
 - Navigate to the Comments page.

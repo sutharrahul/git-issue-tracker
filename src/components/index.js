@@ -6,13 +6,13 @@ import Navbar from "./Navbar";
 import RichTextEditor from "./RichTextEditor";
 import Searchbar from "./Searchbar";
 import SideInfo from "./SideInfo";
-import IssueItem from "./IssueItem";
+import IssueListPage from "./IssueListPage";
 
 export {
   Avatar,
   Badge,
   HeaderDetailPage,
-  IssueItem,
+  IssueListPage,
   Line,
   Navbar,
   RichTextEditor,

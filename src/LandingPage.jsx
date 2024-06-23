@@ -1,14 +1,14 @@
 import React from "react";
-import { IssueItem, Navbar, Searchbar } from "./components";
+import { IssueListPage } from "./components";
 import AddGitIssue from "./components/AddGitIssue";
 
-function HomePage() {
+function LandingPage() {
   return (
     <>
-      <IssueItem />
+      <IssueListPage />
       <AddGitIssue />
     </>
   );
 }
 
-export default HomePage;
+export default LandingPage;

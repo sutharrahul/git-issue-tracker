@@ -5,8 +5,9 @@ import Searchbar from "./Searchbar";
 import Badge from "./Badge";
 import { timeAgo } from "./timeAgo";
 import Navbar from "./Navbar";
+import IssueIcon from "./icons/IssueIcon";
 
-function IssueItem() {
+function IssueListPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const gitIssues = useSelector((state) => state.gitIssue.addGitIssues);
 
@@ -30,21 +31,11 @@ function IssueItem() {
                   className="tooltipped tooltipped-e"
                   aria-label="Open issue"
                 >
-                  <svg
-                    className="octicon octicon-issue-opened open fill-green-500"
-                    viewBox="0 0 16 16"
-                    version="1.1"
-                    width="16"
-                    height="16"
-                    aria-hidden="true"
-                  >
-                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
-                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
-                  </svg>
+                  <IssueIcon />
                 </span>
 
                 <Link
-                  to={`/issue/${gitIssue.id}`}
+                  to={`/issue/${gitIssue?.id}`}
                   className="gap-4 text-white font-semibold hover:text-blue-500 hover:underline cursor-pointer"
                 >
                   {gitIssue.text}
@@ -54,12 +45,11 @@ function IssueItem() {
               <div>
                 <p className="text-sm pt-2 ">
                   <span className="font-semibold text-blue-400">
-                    {" "}
-                    #{index + 1}{" "}
+                    #{index + 1}
                   </span>
                   by
-                  <span className=" text-blue-400"> @{gitIssue.userName}</span>
-                  <span> {timeAgo(new Date(gitIssue.createdAt))}</span>
+                  <span className=" text-blue-400"> @{gitIssue?.userName}</span>
+                  <span> {timeAgo(new Date(gitIssue?.createdAt))}</span>
                 </p>
               </div>
             </div>
@@ -70,4 +60,4 @@ function IssueItem() {
   );
 }
 
-export default IssueItem;
+export default IssueListPage;
